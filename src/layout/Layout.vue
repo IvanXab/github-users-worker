@@ -1,27 +1,18 @@
 <script>
+import Profile from "../components/Profile/Profile.vue";
+import Card from "../components/Card/Card.vue"
 export default {
-  name: "Layout"
+  name: "Layout",
+  components: {Profile, Card}
 }
 </script>
 
 <template>
 <div class="layout">
   <div class="layout__content">
-    <div class="layout__profile">
-      <div class="layout__avatar">
-        avatar
-      </div>
-      <div class="layout__name">
-        name
-      </div>
-      <div class="layout__info">
-        info
-      </div>
-    </div>
+    <Profile/>
     <div class="layout__projects">
-      <div>
-        projects
-      </div>
+      <Card></Card>
     </div>
   </div>
 </div>
@@ -38,23 +29,10 @@ export default {
   &__content {
     display: flex;
   }
-  
-  &__profile {
-    width: 500px;
-    height: 700px;
-    border: 1px solid black
-  }
 
   &__projects {
-    width: 700px;
+    width: 900px;
     height: 700px;
-    border: 1px solid black
-  }
-
-  &__avatar {
-    width: 300px;
-    height: 250px;
-    margin-bottom: 30px;
     border: 1px solid black
   }
 
