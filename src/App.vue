@@ -1,9 +1,9 @@
 <script setup lang="ts">
-
+import Layout from "./layout/Layout.vue";
 </script>
 
 <template>
-<h1>Sas!</h1>
+<Layout></Layout>
 </template>
 
 <style scoped>
