@@ -6,9 +6,8 @@
 <div class="card">
   <div class="card__content">
       <p>MyProject</p>
-      <div class="card__lang">
-          <p>C++</p>
-      </div>
+      <p>My super project in C++</p>
+      <p>C++</p>
   </div>
 </div>
 </template>
@@ -17,11 +16,18 @@
 .card {
   width: 340px;
   height: 150px;
+  margin: 10px;
   border: 2px solid black;
 
   &__content {
     display: flex;
     flex-direction: column;
+
+    p {
+      padding: 10px 0;
+      font-size: 20px;
+      color: #0180ea;
+    }
   }
 }
 </style>

@@ -1,9 +1,10 @@
 <script>
 import Profile from "../components/Profile/Profile.vue";
 import Card from "../components/Card/Card.vue"
+import ProjectsList from "../components/ProjectsList/ProjectsList.vue";
 export default {
   name: "Layout",
-  components: {Profile, Card}
+  components: {ProjectsList, Profile, Card}
 }
 </script>
 
@@ -11,9 +12,7 @@ export default {
 <div class="layout">
   <div class="layout__content">
     <Profile/>
-    <div class="layout__projects">
-      <Card></Card>
-    </div>
+    <ProjectsList/>
   </div>
 </div>
 </template>
@@ -30,18 +29,11 @@ export default {
     display: flex;
   }
 
-  &__projects {
-    width: 900px;
-    height: 700px;
-    border: 1px solid black
-  }
-
   &__name {
     width: 100%;
     height: 50px;
     margin-bottom: 30px;
     border: 1px solid black
   }
-
 }
 </style>
