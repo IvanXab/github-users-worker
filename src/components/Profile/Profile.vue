@@ -1,15 +1,26 @@
 <script setup lang="ts">
 import Avatar from "../Avatar/Avatar.vue";
+
+interface Props {
+  user: {
+    name: string,
+    login: string,
+    email: string,
+    location: string,
+    avatar_url: string
+  };
+}
+const props = defineProps<Props>();
 </script>
 
 <template>
 <div class="profile">
-  <Avatar/>
-  <p class="profile__name">Ivan Ivanov</p>
+  <Avatar :avatar_url="props.user.avatar_url"/>
+  <p class="profile__name">{{ props.user.name }}</p>
   <div class="profile__info">
-      <a href="#">@ivanov</a>
-      <a href="#">example@gmail.com</a>
-      <p>Novosibirsk, Russia</p>
+      <a href="#">@{{ props.user.login }}</a>
+      <a href="#">{{ props.user.email }}</a>
+      <p>{{ props.user.location }}</p>
   </div>
 </div>
 </template>

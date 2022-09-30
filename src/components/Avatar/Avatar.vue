@@ -1,10 +1,13 @@
 <script setup lang="ts">
-const urlAvatar:string = "src/assets/images/github-logo_icon-icons.com_73546.png"
+interface Props {
+  avatar_url: string;
+}
+const props = defineProps<Props>();
 </script>
 
 <template>
 <div class="avatar">
-  <img class="avatar__image" :src="urlAvatar" alt=""/>
+  <img class="avatar__image" :src="props.avatar_url" alt=""/>
 </div>
 </template>
 
@@ -13,8 +16,8 @@ const urlAvatar:string = "src/assets/images/github-logo_icon-icons.com_73546.png
   margin: 10px;
 
   &__image {
-    width: 200px;
-    height: 200px;
+    width: 230px;
+    height: 230px;
     border-radius: 50%;
     object-fit: cover;
   }

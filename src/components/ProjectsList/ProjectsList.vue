@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import Card from "../Card/Card.vue";
+
+interface Props {
+  repos: []
+}
+const props = defineProps<Props>();
 </script>
 
 <template>
 <div class="projects-list">
   <h1>User repositories :</h1>
   <div class="projects-list__content">
-    <Card v-for="project in 100"/>
+    <Card v-for="p in props.repos" :project="p"/>
   </div>
+  <hr>
 </div>
 </template>
 
@@ -17,6 +23,8 @@ import Card from "../Card/Card.vue";
   flex-direction: column;
 
   h1 {
+    font-size: 24px;
+    margin-left: 10px;
     margin-bottom: 15px;
   }
 
@@ -26,9 +34,13 @@ import Card from "../Card/Card.vue";
     max-width: 1100px;
     width: 100%;
     height: 510px;
-    border: 1px solid #9d9d9d;
     border-radius: 10px;
     overflow: auto;
+  }
+
+  hr {
+    margin-top: 50px;
+    opacity: 0.4;
   }
 }
 </style>
