@@ -18,8 +18,8 @@ import Avatar from "../Avatar/Avatar.vue";
 .profile {
   display: flex;
   flex-direction: column;
-  width: 350px;
-  height: 700px;
+  width: 270px;
+  height: 400px;
 
   &__name {
     margin-left: 15px;
