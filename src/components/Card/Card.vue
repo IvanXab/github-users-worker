@@ -37,10 +37,10 @@ const props = defineProps<Props>();
 
 <style lang="scss" scoped>
 .card {
+  display: flex;
   width: 340px;
   height: 150px;
   margin: 10px;
-  padding: 10px;
   border: 1px solid #c7c7c7;
   border-radius: 10px;
   box-shadow: 5px 2px 5px #d5d2d2;
@@ -48,17 +48,19 @@ const props = defineProps<Props>();
   &__content {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 10px;
   }
 
   &__name {
-    padding: 10px 0;
-    font-size: 20px;
-    color: #0180ea;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #047ce0;
   }
 
   &__description {
-    padding: 10px 0;
-    margin-bottom: 15px;
+    font-size: 14px;
+    color: #494949;
   }
 
   &:hover {
