@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Layout from "./layout/Layout.vue";
+import HomePage from "./page/HomePage.vue";
 </script>
 
 <template>
-<Layout></Layout>
+<HomePage/>
 </template>
 
