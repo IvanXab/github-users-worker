@@ -29,17 +29,16 @@ const fetchRepos = async (username: string) => {
 const handleSearchUser = async (username: string) => {
   await fetchUser(username);
   await fetchRepos(username);
+  //
 };
 </script>
 
 <template>
 <Layout>
   <SearchForm @submit="handleSearchUser"/>
-  <Profile :user="user"/>
-  <ProjectsList :repos="repos"/>
+  <div style="display: flex; ">
+    <Profile :user="user"/>
+    <ProjectsList :repos="repos"/>
+  </div>
 </Layout>
 </template>
-
-<style lang="scss" scoped>
-
-</style>

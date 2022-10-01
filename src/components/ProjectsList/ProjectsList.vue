@@ -13,7 +13,6 @@ const props = defineProps<Props>();
   <div class="projects-list__content">
     <Card v-for="p in props.repos" :project="p"/>
   </div>
-  <hr>
 </div>
 </template>
 
@@ -38,9 +37,8 @@ const props = defineProps<Props>();
     overflow: auto;
   }
 
-  hr {
-    margin-top: 50px;
-    opacity: 0.4;
+  &__search {
+    display: flex;
   }
 }
 </style>

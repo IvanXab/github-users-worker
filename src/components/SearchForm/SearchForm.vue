@@ -13,14 +13,44 @@ const handleSubmit = (searchValue: string) => {
 
 <template>
 <div class="search-form">
-  <input type="text" placeholder="Search user..." v-model="inputUser"/>
-  <button @click="handleSubmit">+</button>
-</div>
+  <input v-model="inputUser" class="search-form__input" type="text" placeholder="Search user..."/>
+  <button @click="handleSubmit" class="search-form__button">Search</button>
+</div><hr>
 </template>
 
 <style lang="scss" scoped>
 .search-form {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+
+  &__input {
+    width: 700px;
+    height: 32px;
+    padding: 10px;
+    border: 1px solid #a9a9a9;
+    border-radius: 20px;
+  }
+
+  &__button {
+    width: 70px;
+    height: 32px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 15px;
+    background: #b0c6d3;
+
+    &:hover {
+      transition: 0.2s;
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}
+
+hr {
+  margin: 20px 0 30px;
+  opacity: 0.4;
 }
 </style>
