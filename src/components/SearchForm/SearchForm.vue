@@ -13,7 +13,7 @@ const handleSubmit = (searchValue: string) => {
 
 <template>
 <div class="search-form">
-  <input v-model="inputUser" class="search-form__input" type="text" placeholder="Search user..."/>
+  <input v-model="inputUser" class="search-form__input" type="text" placeholder="Find a GitHub profile..."/>
   <button @click="handleSubmit" class="search-form__button">Search</button>
 </div><hr>
 </template>
@@ -30,7 +30,7 @@ const handleSubmit = (searchValue: string) => {
     height: 32px;
     padding: 10px;
     border: 1px solid #a9a9a9;
-    border-radius: 20px;
+    border-radius: 10px;
   }
 
   &__button {
@@ -39,7 +39,7 @@ const handleSubmit = (searchValue: string) => {
     margin-left: 10px;
     border: none;
     border-radius: 15px;
-    background: #b0c6d3;
+    background-image: linear-gradient(to right, #d5dadc, #d6d9db, #d6d8d9, #d7d7d8, #d6d6d6);
 
     &:hover {
       transition: 0.2s;

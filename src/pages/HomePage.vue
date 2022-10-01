@@ -9,8 +9,9 @@ import axios from "axios";
 
 let user = ref({});
 let repos = ref([]);
+let isSearch = ref(false);
 
-const fetchUser = async (username: string) => {
+const fetchUser = async (username: string): Promise<void> => {
   const response = await axios.get(`https://api.github.com/users/${username}`);
   user.value = {
     name: response.data.name,
@@ -21,24 +22,51 @@ const fetchUser = async (username: string) => {
   };
 };
 
-const fetchRepos = async (username: string) => {
+const fetchRepos = async (username: string): Promise<void> => {
   const response = await axios.get(`https://api.github.com/users/${username}/repos`);
   repos.value = response.data;
 };
 
-const handleSearchUser = async (username: string) => {
+const handleSearchUser = async (username: string): Promise<void> => {
+  isSearch.value = true;
   await fetchUser(username);
   await fetchRepos(username);
-  //
 };
 </script>
 
 <template>
 <Layout>
   <SearchForm @submit="handleSearchUser"/>
-  <div style="display: flex; ">
+  <div class="home-page" v-if="isSearch">
     <Profile :user="user"/>
     <ProjectsList :repos="repos"/>
   </div>
+  <div class="home-page__welcome" v-if="!isSearch">
+    <img src="src/assets/images/Octocat.png" alt="">
+    <p>You can search for a GitHub profile now!</p>
+  </div>
 </Layout>
 </template>
+
+<style lang="scss" scoped>
+.home-page {
+  display: flex;
+
+  &__welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+
+    img {
+      width: 300px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      letter-spacing: 0.3px;
+    }
+  }
+}
+</style>

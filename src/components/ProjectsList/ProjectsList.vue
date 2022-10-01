@@ -10,9 +10,11 @@ const props = defineProps<Props>();
 <template>
 <div class="projects-list">
   <h1>User repositories :</h1>
+  <transition-group name="list">
   <div class="projects-list__content">
-    <Card v-for="p in props.repos" :project="p"/>
+    <Card v-for="p in props.repos" :key="p.name" :project="p"/>
   </div>
+  </transition-group>
 </div>
 </template>
 
@@ -40,5 +42,15 @@ const props = defineProps<Props>();
   &__search {
     display: flex;
   }
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>
