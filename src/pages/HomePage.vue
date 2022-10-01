@@ -41,9 +41,9 @@ const handleSearchUser = async (username: string): Promise<void> => {
     <Profile :user="user"/>
     <ProjectsList :repos="repos"/>
   </div>
-  <div class="home-page__welcome" v-if="!isSearch">
-    <img src="src/assets/images/Octocat.png" alt="">
-    <p>You can search for a GitHub profile now!</p>
+  <div class="home-page__welcome" v-else>
+    <img class="home-page__logo" src="src/assets/images/Octocat.png" alt="">
+    <p class="home-page__text">You can search for a GitHub profile now!</p>
   </div>
 </Layout>
 </template>
@@ -58,15 +58,15 @@ const handleSearchUser = async (username: string): Promise<void> => {
     justify-content: center;
     align-items: center;
     height: 500px;
+  }
 
-    img {
-      width: 300px;
-      margin-bottom: 15px;
-    }
+  &__logo {
+    width: 300px;
+    margin-bottom: 15px;
+  }
 
-    p {
-      letter-spacing: 0.3px;
-    }
+  &__text {
+    letter-spacing: 0.3px;
   }
 }
 </style>

@@ -18,9 +18,9 @@ const props = defineProps<Props>();
   <Avatar :avatar_url="props.user.avatar_url"/>
   <p class="profile__name">{{ props.user.name }}</p>
   <div class="profile__info">
-      <a href="#">@{{ props.user.login }}</a>
-      <a href="#">{{ props.user.email }}</a>
-      <p>{{ props.user.location }}</p>
+      <a class="profile__login" href="#">@{{ props.user.login }}</a>
+      <a class="profile__email" href="#">{{ props.user.email }}</a>
+      <p class="profile__location">{{ props.user.location }}</p>
   </div>
 </div>
 </template>
@@ -43,16 +43,16 @@ const props = defineProps<Props>();
     display: flex;
     flex-direction: column;
     margin-left: 15px;
+  }
 
-    a {
-      padding-top: 10px;
-      text-decoration: none;
-      color: #06b3e7;
-    }
+  &__login, &__email {
+    padding-top: 10px;
+    text-decoration: none;
+    color: #06b3e7;
+  }
 
-    p {
-      padding-top: 10px;
-    }
+  &__location {
+    padding-top: 10px;
   }
 }
 </style>
