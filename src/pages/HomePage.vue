@@ -3,13 +3,17 @@ import Profile from "../components/Profile/Profile.vue";
 import ProjectsList from "../components/ProjectsList/ProjectsList.vue";
 import SearchForm from "../components/SearchForm/SearchForm.vue";
 import Layout from "../layout/Layout.vue";
+import Loader from "../components/Loader/Loader.vue";
 
 import {ref} from "vue";
 import axios from "axios";
 
+
 let user = ref({});
 let repos = ref([]);
 let isSearch = ref(false);
+let isLoading = ref(false);
+
 
 const fetchUser = async (username: string): Promise<void> => {
   const response = await axios.get(`https://api.github.com/users/${username}`);
@@ -28,9 +32,11 @@ const fetchRepos = async (username: string): Promise<void> => {
 };
 
 const handleSearchUser = async (username: string): Promise<void> => {
+  isLoading.value = true;
   isSearch.value = true;
   await fetchUser(username);
   await fetchRepos(username);
+  isLoading.value = false;
 };
 </script>
 
@@ -38,8 +44,8 @@ const handleSearchUser = async (username: string): Promise<void> => {
 <Layout>
   <SearchForm @submit="handleSearchUser"/>
   <div class="home-page" v-if="isSearch">
-    <Profile :user="user"/>
-    <ProjectsList :repos="repos"/>
+    <Profile :user="user" />
+    <ProjectsList :repos="repos" :is-loading="isLoading"/>
   </div>
   <div class="home-page__welcome" v-else>
     <img class="home-page__logo" src="src/assets/images/Octocat.png" alt="">

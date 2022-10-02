@@ -27,7 +27,7 @@ const handleSubmit = (searchValue: string) => {
 
   &__input {
     width: 700px;
-    height: 32px;
+    height: 40px;
     padding: 10px;
     border: 1px solid #a9a9a9;
     border-radius: 10px;
@@ -35,14 +35,14 @@ const handleSubmit = (searchValue: string) => {
 
   &__button {
     width: 70px;
-    height: 32px;
+    height: 40px;
     margin-left: 10px;
     border: none;
     border-radius: 15px;
     background-image: linear-gradient(to right, #d5dadc, #d6d9db, #d6d8d9, #d7d7d8, #d6d6d6);
 
     &:hover {
-      transition: 0.2s;
+      transition: 0.5s;
       opacity: 0.8;
       cursor: pointer;
     }

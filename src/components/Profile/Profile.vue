@@ -29,7 +29,7 @@ const props = defineProps<Props>();
 .profile {
   display: flex;
   flex-direction: column;
-  width: 270px;
+  width: 350px;
   height: 400px;
 
   &__name {
