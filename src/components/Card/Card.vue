@@ -14,7 +14,10 @@ const props = defineProps<Props>();
 <template>
 <div class="card">
   <div class="card__content">
-      <p class="card__name">{{ props.project.name }}</p>
+      <div style="">
+        <img src="src/assets/images/repos_icon.png" alt="" width="16">
+        <span class="card__name">{{ props.project.name }}</span>
+      </div>
       <p class="card__description">{{ props.project.description }}</p>
       <div class="card__stats stats-item">
         <div class="stats-item__lang">
@@ -49,10 +52,12 @@ const props = defineProps<Props>();
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%;
     padding: 15px 10px;
   }
 
   &__name {
+    padding-left: 5px;
     font-size: 18px;
     line-height: 1.5;
     color: #047ce0;
@@ -71,8 +76,8 @@ const props = defineProps<Props>();
 
 .stats-item {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
+  justify-content: space-between;
 
   &__popular {
     display: flex;
