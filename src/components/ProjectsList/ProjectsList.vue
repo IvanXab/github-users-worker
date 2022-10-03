@@ -3,8 +3,8 @@ import Card from "../Card/Card.vue";
 import Loader from "../Loader/Loader.vue";
 
 interface Props {
-  repos: [],
-  isLoading: boolean
+  repos: [];
+  isLoading: boolean;
 }
 const props = defineProps<Props>();
 </script>

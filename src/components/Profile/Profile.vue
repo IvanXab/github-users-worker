@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Avatar from "../Avatar/Avatar.vue";
+import Loader from "../Loader/Loader.vue"
 
 interface Props {
   user: {
@@ -9,18 +10,22 @@ interface Props {
     location: string,
     avatar_url: string
   };
+  isLoading: boolean;
 }
 const props = defineProps<Props>();
 </script>
 
 <template>
 <div class="profile">
-  <Avatar :avatar_url="props.user.avatar_url"/>
-  <p class="profile__name">{{ props.user.name }}</p>
-  <div class="profile__info">
+  <Loader v-if="props.isLoading"/>
+  <div class="profile__content" v-else>
+    <Avatar :avatar_url="props.user.avatar_url"/>
+    <p class="profile__name">{{ props.user.name }}</p>
+    <div class="profile__info">
       <a class="profile__login" href="#">@{{ props.user.login }}</a>
       <a class="profile__email" href="#">{{ props.user.email }}</a>
       <p class="profile__location">{{ props.user.location }}</p>
+    </div>
   </div>
 </div>
 </template>
