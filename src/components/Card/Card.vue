@@ -21,6 +21,7 @@ const props = defineProps<Props>();
       <p class="card__description">{{ props.project.description }}</p>
       <div class="card__stats stats-item">
         <div class="stats-item__lang">
+          <div class="circle"></div>
           <span>{{ props.project.language }}</span>
         </div>
         <div class="stats-item__popular">
@@ -79,16 +80,34 @@ const props = defineProps<Props>();
   flex-direction: row;
   justify-content: space-between;
 
+  &__lang {
+    display: flex;
+  }
+
   &__popular {
     display: flex;
   }
 
   &__stars {
     margin: 0 5px;
+    span {
+      padding-left: 2px;
+    }
   }
 
   &__forks {
     margin: 0 5px;
+    span {
+      padding-left: 2px;
+    }
   }
+}
+
+.circle {
+  width: 17px;
+  height: 17px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #8f8f8f;
 }
 </style>
