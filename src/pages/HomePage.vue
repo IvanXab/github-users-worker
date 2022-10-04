@@ -26,6 +26,11 @@ const fetchUser = async (username: string): Promise<void> => {
 const fetchRepos = async (username: string): Promise<void> => {
   const response = await axios.get(`https://api.github.com/users/${username}/repos`);
   repos.value = response.data;
+  repos.value.map((rep) => {
+     if (!rep.language) {
+       rep.language = 'Markdown'
+     }
+  })
 };
 
 const handleSearchUser = async (username: string): Promise<void> => {
