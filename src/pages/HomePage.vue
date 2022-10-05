@@ -6,27 +6,23 @@ import Layout from "../layout/Layout.vue";
 
 import {ref} from "vue";
 import axios from "axios";
+import {repositoryType, userType} from "../types/ApiType";
 
-let user = ref({});
-let repos = ref([]);
+let user = ref<userType>();
+let repos = ref<repositoryType[]>();
 let isSearch = ref(false);
 let isLoading = ref(false);
 
 const fetchUser = async (username: string): Promise<void> => {
   const response = await axios.get(`https://api.github.com/users/${username}`);
-  user.value = {
-    name: response.data.name,
-    login: response.data.login,
-    email: response.data.email,
-    location: response.data.location,
-    avatar_url: response.data.avatar_url,
-    url_profile: response.data.html_url
-  };
+  user.value = response.data;
+  console.log(user.value)
 };
 
 const fetchRepos = async (username: string): Promise<void> => {
   const response = await axios.get(`https://api.github.com/users/${username}/repos`);
   repos.value = response.data;
+  console.log(repos.value)
 };
 
 const handleSearchUser = async (username: string): Promise<void> => {

@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import Card from "../Card/Card.vue";
 import Loader from "../Loader/Loader.vue";
+import {repositoryType} from "../../types/ApiType";
 
 interface Props {
-  repos: [];
+  repos: repositoryType[] | undefined;
   isLoading: boolean;
 }
+
 const props = defineProps<Props>();
 </script>
 
@@ -16,9 +18,9 @@ const props = defineProps<Props>();
     <loader v-if="props.isLoading"/>
     <card
         v-else
-        v-for="p in props.repos"
-        :key="p.name"
-        :project="p"
+        v-for="r in props.repos"
+        :key="r.name"
+        :repository="r"
     />
   </div>
 </div>

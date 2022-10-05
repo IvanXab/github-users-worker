@@ -1,16 +1,11 @@
 <script setup lang="ts">
 import Avatar from "../Avatar/Avatar.vue";
-import Loader from "../Loader/Loader.vue"
+import Loader from "../Loader/Loader.vue";
+import {userType} from "../../types/ApiType";
+import {PropType} from "vue";
 
 interface Props {
-  user: {
-    name: string,
-    login: string,
-    email: string,
-    location: string,
-    avatar_url: string,
-    url_profile: string
-  };
+  user: userType | undefined;
   isLoading: boolean;
 }
 const props = defineProps<Props>();

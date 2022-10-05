@@ -1,12 +1,9 @@
 <script setup lang="ts">
+import {PropType} from "vue";
+import {repositoryType} from "../../types/ApiType";
+
 interface Props {
-  project: {
-    name: string,
-    description: string,
-    language: string,
-    stargazers_count: string,
-    forks_count: string
-  };
+  repository: repositoryType;
 }
 const props = defineProps<Props>();
 </script>
@@ -16,22 +13,22 @@ const props = defineProps<Props>();
   <div class="card__content">
       <div style="">
         <img src="src/assets/images/repos_icon.png" alt="" width="16">
-        <span class="card__name">{{ props.project.name }}</span>
+        <span class="card__name">{{ props.repository.name }}</span>
       </div>
-      <p class="card__description">{{ props.project.description }}</p>
+      <p class="card__description">{{ props.repository.description }}</p>
       <div class="card__stats stats-item">
         <div class="stats-item__lang">
           <div class="circle"></div>
-          <span>{{ props.project.language }}</span>
+          <span>{{ props.repository.language }}</span>
         </div>
         <div class="stats-item__popular">
           <div class="stats-item__stars">
             <img src="src/assets/images/star.png" alt="" width="17">
-            <span>{{ props.project.stargazers_count }}</span>
+            <span>{{ props.repository.stargazers_count }}</span>
           </div>
           <div class="stats-item__forks">
             <img src="src/assets/images/icons8-branch-arrow-64.png" alt="" width="17">
-            <span>{{ props.project.forks_count }}</span>
+            <span>{{ props.repository.forks_count }}</span>
           </div>
         </div>
       </div>
