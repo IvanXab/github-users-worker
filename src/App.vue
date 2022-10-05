@@ -3,6 +3,6 @@ import HomePage from "./pages/HomePage.vue";
 </script>
 
 <template>
-<HomePage/>
+<home-page/>
 </template>
 

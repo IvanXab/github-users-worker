@@ -13,8 +13,8 @@ const props = defineProps<Props>();
 <div class="projects-list">
   <h1 class="projects-list__header">User repositories :</h1>
   <div class="projects-list__content">
-    <Loader v-if="props.isLoading"/>
-    <Card
+    <loader v-if="props.isLoading"/>
+    <card
         v-else
         v-for="p in props.repos"
         :key="p.name"

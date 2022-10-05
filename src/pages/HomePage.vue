@@ -19,18 +19,14 @@ const fetchUser = async (username: string): Promise<void> => {
     login: response.data.login,
     email: response.data.email,
     location: response.data.location,
-    avatar_url: response.data.avatar_url
+    avatar_url: response.data.avatar_url,
+    url_profile: response.data.html_url
   };
 };
 
 const fetchRepos = async (username: string): Promise<void> => {
   const response = await axios.get(`https://api.github.com/users/${username}/repos`);
   repos.value = response.data;
-  repos.value.map((rep) => {
-     if (!rep.language) {
-       rep.language = 'Markdown'
-     }
-  })
 };
 
 const handleSearchUser = async (username: string): Promise<void> => {
@@ -43,17 +39,17 @@ const handleSearchUser = async (username: string): Promise<void> => {
 </script>
 
 <template>
-<Layout>
-  <SearchForm @submit="handleSearchUser"/>
+<layout>
+  <search-form @submit="handleSearchUser"/>
   <div class="home-page" v-if="isSearch">
-    <Profile :user="user" :is-loading="isLoading" />
-    <ProjectsList :repos="repos" :is-loading="isLoading"/>
+    <profile :user="user" :is-loading="isLoading" />
+    <projects-list :repos="repos" :is-loading="isLoading"/>
   </div>
   <div class="home-page__welcome" v-else>
     <img class="home-page__logo" src="src/assets/images/Octocat.png" alt="">
     <p class="home-page__text">You can search for a GitHub profile now!</p>
   </div>
-</Layout>
+</layout>
 </template>
 
 <style lang="scss" scoped>

@@ -8,7 +8,8 @@ interface Props {
     login: string,
     email: string,
     location: string,
-    avatar_url: string
+    avatar_url: string,
+    url_profile: string
   };
   isLoading: boolean;
 }
@@ -17,13 +18,13 @@ const props = defineProps<Props>();
 
 <template>
 <div class="profile">
-  <Loader v-if="props.isLoading"/>
+  <loader v-if="props.isLoading"/>
   <div class="profile__content" v-else>
-    <Avatar :avatar_url="props.user.avatar_url"/>
+    <avatar :avatar_url="props.user.avatar_url"/>
     <p class="profile__name">{{ props.user.name }}</p>
     <div class="profile__info">
-      <a class="profile__login" href="#">@{{ props.user.login }}</a>
-      <a class="profile__email" href="#">{{ props.user.email }}</a>
+      <a class="profile__login" :href="props.user.url_profile" target="_blank">@{{ props.user.login }}</a>
+      <p class="profile__email">{{ props.user.email }}</p>
       <p class="profile__location">{{ props.user.location }}</p>
     </div>
   </div>
