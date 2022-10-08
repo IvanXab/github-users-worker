@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import {defineProps} from "vue";
+
 interface Props {
   avatar_url: string;
 }

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Card from "../Card/Card.vue";
 import Loader from "../Loader/Loader.vue";
+import {defineProps} from "vue";
+
 import {repositoryType} from "../../types/ApiType";
 
 interface Props {
@@ -44,9 +46,12 @@ const props = defineProps<Props>();
   &__content {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     max-width: 1100px;
     width: 100%;
-    height: 510px;
+    min-height: 80%;
+    max-height: 510px;
     border-radius: 10px;
     overflow: auto;
   }

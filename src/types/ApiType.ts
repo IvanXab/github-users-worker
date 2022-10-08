@@ -4,7 +4,7 @@ export type userType = {
     email: string,
     location: string,
     avatar_url: string,
-    url_profile: string
+    html_url: string
 };
 
 export type repositoryType = {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {PropType} from "vue";
 import {repositoryType} from "../../types/ApiType";
+import {defineProps} from "vue";
 
 interface Props {
   repository: repositoryType;
@@ -18,7 +18,7 @@ const props = defineProps<Props>();
       <p class="card__description">{{ props.repository.description }}</p>
       <div class="card__stats stats-item">
         <div class="stats-item__lang">
-          <div class="circle"></div>
+          <div class="circle"></div>c
           <span>{{ props.repository.language }}</span>
         </div>
         <div class="stats-item__popular">

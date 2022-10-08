@@ -8,10 +8,10 @@ import {ref} from "vue";
 import axios from "axios";
 import {repositoryType, userType} from "../types/ApiType";
 
-let user = ref<userType>();
-let repos = ref<repositoryType[]>();
-let isSearch = ref(false);
-let isLoading = ref(false);
+const user = ref<userType>();
+const repos = ref<repositoryType[]>();
+const isSearch = ref(false);
+const isLoading = ref(false);
 
 const fetchUser = async (username: string): Promise<void> => {
   const response = await axios.get(`https://api.github.com/users/${username}`);
@@ -67,6 +67,12 @@ const handleSearchUser = async (username: string): Promise<void> => {
 
   &__text {
     letter-spacing: 0.3px;
+  }
+
+  @media (max-width: 1500px) {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 }
 </style>

@@ -1,16 +1,21 @@
+<script setup lang="ts">
+import Header from "../components/Header/Header.vue";
+</script>
+
 <template>
-<div class="layout">
-  <div class="layout__content">
+  <Header/>
+<div class="main">
+  <div class="main__content">
       <slot></slot>
   </div>
 </div>
 </template>
 
 <style lang="scss" scoped>
-.layout {
+.main {
   display: flex;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   justify-content: center;
   align-items: center;
 

@@ -31,6 +31,18 @@ const handleSubmit = (searchValue: string) => {
     padding: 10px;
     border: 1px solid #a9a9a9;
     border-radius: 10px;
+
+    @media (max-width: 866px) {
+        width: 550px;
+    }
+
+    @media (max-width: 650px) {
+      width: 350px;
+    }
+
+    @media (max-width: 450px) {
+      width: 250px;
+    }
   }
 
   &__button {
@@ -42,10 +54,14 @@ const handleSubmit = (searchValue: string) => {
     background-image: linear-gradient(to right, #d5dadc, #d6d9db, #d6d8d9, #d7d7d8, #d6d6d6);
 
     &:hover {
-      transition: 0.5s;
-      opacity: 0.8;
+      background-image: linear-gradient(to right, #50e576, #43e684, #36e791, #28e89d, #19e9a9);
+      transition: 1s;
       cursor: pointer;
     }
+  }
+
+  @media (max-width: 1520px) {
+    margin-top: 20px;
   }
 }
 
