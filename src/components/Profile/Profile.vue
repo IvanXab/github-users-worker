@@ -16,12 +16,12 @@ const props = defineProps<Props>();
 <div class="profile">
   <loader v-if="props.isLoading"/>
   <div class="profile__content" v-else>
-    <avatar :avatar_url="props.user.avatar_url"/>
-    <p class="profile__name">{{ props.user.name }}</p>
+    <avatar :avatar_url="props.user?.avatar_url"/>
+    <p class="profile__name">{{ props.user?.name }}</p>
     <div class="profile__info">
-      <a class="profile__login" :href="props.user.html_url" target="_blank">@{{ props.user.login }}</a>
-      <p class="profile__email">{{ props.user.email }}</p>
-      <p class="profile__location">{{ props.user.location }}</p>
+      <a class="profile__login" :href="props.user?.html_url" target="_blank">@{{ props.user?.login }}</a>
+      <p class="profile__email">{{ props.user?.email }}</p>
+      <p class="profile__location">{{ props.user?.location }}</p>
     </div>
   </div>
 </div>

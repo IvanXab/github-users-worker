@@ -12,22 +12,22 @@ const props = defineProps<Props>();
 <div class="card">
   <div class="card__content">
       <div style="">
-        <img src="src/assets/images/repos_icon.png" alt="" width="16">
-        <span class="card__name">{{ props.repository.name }}</span>
+        <img src="/src/assets/images/repos_icon.png" alt="" width="17">
+        <a class="card__name" :href="props.repository.html_url" target="_blank">{{ props.repository.name }}</a>
       </div>
       <p class="card__description">{{ props.repository.description }}</p>
       <div class="card__stats stats-item">
         <div class="stats-item__lang">
-          <div class="circle"></div>c
+          <div class="circle"></div>
           <span>{{ props.repository.language }}</span>
         </div>
         <div class="stats-item__popular">
           <div class="stats-item__stars">
-            <img src="src/assets/images/star.png" alt="" width="17">
+            <img src="/src/assets/images/star.png" alt="" width="17">
             <span>{{ props.repository.stargazers_count }}</span>
           </div>
           <div class="stats-item__forks">
-            <img src="src/assets/images/icons8-branch-arrow-64.png" alt="" width="17">
+            <img src="/src/assets/images/icons8-branch-arrow-64.png" alt="" width="17">
             <span>{{ props.repository.forks_count }}</span>
           </div>
         </div>
@@ -57,6 +57,7 @@ const props = defineProps<Props>();
   &__name {
     padding-left: 5px;
     font-size: 18px;
+    text-decoration: none;
     line-height: 1.5;
     color: #047ce0;
   }

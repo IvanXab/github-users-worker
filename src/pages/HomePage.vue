@@ -5,31 +5,20 @@ import SearchForm from "../components/SearchForm/SearchForm.vue";
 import Layout from "../layout/Layout.vue";
 
 import {ref} from "vue";
-import axios from "axios";
+import {AxiosService} from "../api/AxiosService";
 import {repositoryType, userType} from "../types/ApiType";
 
 const user = ref<userType>();
 const repos = ref<repositoryType[]>();
 const isSearch = ref(false);
 const isLoading = ref(false);
-
-const fetchUser = async (username: string): Promise<void> => {
-  const response = await axios.get(`https://api.github.com/users/${username}`);
-  user.value = response.data;
-  console.log(user.value)
-};
-
-const fetchRepos = async (username: string): Promise<void> => {
-  const response = await axios.get(`https://api.github.com/users/${username}/repos`);
-  repos.value = response.data;
-  console.log(repos.value)
-};
+const axiosService = new AxiosService();
 
 const handleSearchUser = async (username: string): Promise<void> => {
   isLoading.value = true;
   isSearch.value = true;
-  await fetchUser(username);
-  await fetchRepos(username);
+  user.value = await axiosService.fetchUser(username);
+  repos.value = await axiosService.fetchRepos(username);
   isLoading.value = false;
 };
 </script>
@@ -42,7 +31,7 @@ const handleSearchUser = async (username: string): Promise<void> => {
     <projects-list :repos="repos" :is-loading="isLoading"/>
   </div>
   <div class="home-page__welcome" v-else>
-    <img class="home-page__logo" src="src/assets/images/Octocat.png" alt="">
+    <img class="home-page__logo" src="/src/assets/images/Octocat.png" alt="">
     <p class="home-page__text">You can search for a GitHub profile now!</p>
   </div>
 </layout>
