@@ -2,7 +2,7 @@
 import {defineProps} from "vue";
 
 interface Props {
-  avatar_url: string;
+  avatar_url?: string;
 }
 const props = defineProps<Props>();
 </script>

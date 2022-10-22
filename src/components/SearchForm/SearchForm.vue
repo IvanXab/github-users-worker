@@ -5,14 +5,13 @@ const inputUser = ref('');
 
 const emit = defineEmits<{ (e: 'submit', searchValue: string): void }>();
 
-const handleSubmit = (searchValue: string): void=> {
-    searchValue = inputUser.value;
-    emit('submit', searchValue);
+const handleSubmit = (): void => {
+    emit('submit', inputUser.value);
 }
 </script>
 
 <template>
-<div class="search-form" :keyup.enter="handleSubmit">
+<div class="search-form" @keyup.enter="handleSubmit">
   <input v-model="inputUser" class="search-form__input" type="text" placeholder="Find a GitHub profile..."/>
   <button @click="handleSubmit" class="search-form__button">Search</button>
 </div><hr>
