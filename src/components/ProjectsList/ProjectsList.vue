@@ -16,15 +16,16 @@ const props = defineProps<Props>();
 <template>
 <div class="projects-list">
   <h1 class="projects-list__header">User repositories :</h1>
-  <div class="projects-list__content">
     <loader v-if="props.isLoading"/>
-    <card
-        v-else
-        v-for="r in props.repos"
-        :key="r.name"
-        :repository="r"
-    />
-  </div>
+    <el-scrollbar v-else>
+      <div class="projects-list__content">
+        <card
+            v-for="r in props.repos"
+            :key="r.name"
+            :repository="r"
+        />
+      </div>
+    </el-scrollbar>
 </div>
 </template>
 
@@ -37,12 +38,6 @@ const props = defineProps<Props>();
   padding: 10px;
   border-radius: 10px;
 
-  &__header {
-    font-size: 24px;
-    margin-left: 10px;
-    margin-bottom: 15px;
-  }
-
   &__content {
     display: flex;
     flex-wrap: wrap;
@@ -53,7 +48,12 @@ const props = defineProps<Props>();
     min-height: 80%;
     max-height: 510px;
     border-radius: 10px;
-    overflow: auto;
+  }
+
+  &__header {
+    font-size: 24px;
+    margin-left: 10px;
+    margin-bottom: 15px;
   }
 
   &__search {
