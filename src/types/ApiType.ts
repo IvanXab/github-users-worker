@@ -15,3 +15,8 @@ export type repositoryType = {
     forks_count: string,
     html_url: string
 };
+
+export type optionsType = {
+    value: string,
+    label: string
+}

@@ -1,26 +1,63 @@
 <script setup lang="ts">
 import Card from "../Card/Card.vue";
 import Loader from "../Loader/Loader.vue";
-import {defineProps} from "vue";
-
-import {repositoryType} from "../../types/ApiType";
+import {defineProps, ref} from "vue";
+import {optionsType, repositoryType} from "../../types/ApiType";
+import {usePepositoresStore} from "../../stores/repositores";
 
 interface Props {
-  repos: repositoryType[] | undefined;
+  //repos?: repositoryType[];
+ // optionsFilter?: Set<optionsType>;
   isLoading: boolean;
 }
 
 const props = defineProps<Props>();
+const repositoresStore = usePepositoresStore();
+
+const filterValue = ref('');
+const sortValue = ref('');
+
+const optionsSort = [
+  {
+    value: 'name',
+    label: 'Name'
+  },
+  {
+    value: 'stars',
+    label: 'Stars'
+  }
+];
+
 </script>
 
 <template>
 <div class="projects-list">
-  <h1 class="projects-list__header">User repositories :</h1>
+  <div class="projects-list__header">
+    <h1>User repositories :</h1>
+    <div class="projects-list__select">
+      <el-select v-model="filterValue" placeholder="Language">
+        <el-option
+            v-for="item in optionsSort"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+        />
+      </el-select>
+      <el-select v-model="sortValue" placeholder="Sort">
+        <el-option
+            v-for="item in optionsSort"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+        />
+      </el-select>
+    </div>
+  </div>
     <loader v-if="props.isLoading"/>
     <el-scrollbar v-else>
       <div class="projects-list__content">
         <card
-            v-for="r in props.repos"
+            v-for="r in repositoresStore.repositories"
             :key="r.name"
             :repository="r"
         />
@@ -51,9 +88,14 @@ const props = defineProps<Props>();
   }
 
   &__header {
-    font-size: 24px;
-    margin-left: 10px;
-    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+      font-size: 24px;
+      margin-left: 10px;
+      margin-bottom: 15px;
+    }
   }
 
   &__search {
