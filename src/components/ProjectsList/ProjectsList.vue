@@ -2,12 +2,11 @@
 import Card from "../Card/Card.vue";
 import Loader from "../Loader/Loader.vue";
 import {defineProps, ref} from "vue";
-import {optionsType, repositoryType} from "../../types/ApiType";
-import {usePepositoresStore} from "../../stores/repositores";
+import { optionsType } from "../../types/ApiType";
+import { usePepositoresStore } from "../../stores/repositores";
 
 interface Props {
-  //repos?: repositoryType[];
- // optionsFilter?: Set<optionsType>;
+  optionsFilter?: Set<optionsType>;
   isLoading: boolean;
 }
 
@@ -35,9 +34,9 @@ const optionsSort = [
   <div class="projects-list__header">
     <h1>User repositories :</h1>
     <div class="projects-list__select">
-      <el-select v-model="filterValue" placeholder="Language">
+      <el-select v-model="filterValue" placeholder="Language" @change="repositoresStore.setFilter">
         <el-option
-            v-for="item in optionsSort"
+            v-for="item in optionsFilter"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -57,7 +56,7 @@ const optionsSort = [
     <el-scrollbar v-else>
       <div class="projects-list__content">
         <card
-            v-for="r in repositoresStore.repositories"
+            v-for="r in repositoresStore.getFilteredRepos"
             :key="r.name"
             :repository="r"
         />
