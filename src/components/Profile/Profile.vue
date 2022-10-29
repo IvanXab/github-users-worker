@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Avatar from "../Avatar/Avatar.vue";
-import Loader from "../Loader/Loader.vue";
-import {userType} from "../../types/ApiType";
+import Avatar from "@/components/Avatar/Avatar.vue";
+import Loader from "@/components/Loader/Loader.vue";
+import { userType } from "@/types/ApiType";
 
 import {defineProps} from "vue";
 

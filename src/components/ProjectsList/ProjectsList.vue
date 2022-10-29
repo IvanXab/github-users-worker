@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import Card from "../Card/Card.vue";
-import Loader from "../Loader/Loader.vue";
-import {defineProps, ref} from "vue";
-import { optionsType } from "../../types/ApiType";
-import { usePepositoresStore } from "../../stores/repositores";
+import Card from "@/components/Card/Card.vue";
+import Loader from "@/components/Loader/Loader.vue";
+import { defineProps, ref } from "vue";
+import { optionsType } from "@/types/ApiType";
+import { useRepositoriesStore } from "@/store/repositories";
 
 interface Props {
   optionsFilter?: Set<optionsType>;
   isLoading: boolean;
-}
+};
 
 const props = defineProps<Props>();
-const repositoresStore = usePepositoresStore();
-
+const repositoriesStore = useRepositoriesStore();
 const filterValue = ref('');
 const sortValue = ref('');
 
@@ -26,7 +25,6 @@ const optionsSort = [
     label: 'Stars'
   }
 ];
-
 </script>
 
 <template>
@@ -34,7 +32,7 @@ const optionsSort = [
   <div class="projects-list__header">
     <h1>User repositories :</h1>
     <div class="projects-list__select">
-      <el-select v-model="filterValue" placeholder="Language" @change="repositoresStore.setFilter">
+      <el-select v-model="filterValue" placeholder="Language" @change="repositoriesStore.setFilter">
         <el-option
             v-for="item in optionsFilter"
             :key="item.value"
@@ -42,7 +40,7 @@ const optionsSort = [
             :value="item.value"
         />
       </el-select>
-      <el-select v-model="sortValue" placeholder="Sort">
+      <el-select v-model="sortValue" placeholder="Sort" @change="repositoriesStore.setSort">
         <el-option
             v-for="item in optionsSort"
             :key="item.value"
@@ -56,7 +54,7 @@ const optionsSort = [
     <el-scrollbar v-else>
       <div class="projects-list__content">
         <card
-            v-for="r in repositoresStore.getFilteredRepos"
+            v-for="r in repositoriesStore.getFilteredRepositories"
             :key="r.name"
             :repository="r"
         />
@@ -69,17 +67,15 @@ const optionsSort = [
 .projects-list {
   display: flex;
   flex-direction: column;
-  width: 80%;
-  border: 1px solid #cccccc;
+  width: 100%;
+  max-width: 1120px;
   padding: 10px;
   border-radius: 10px;
 
   &__content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    max-width: 1100px;
     width: 100%;
     min-height: 80%;
     max-height: 510px;
@@ -95,6 +91,15 @@ const optionsSort = [
       margin-left: 10px;
       margin-bottom: 15px;
     }
+
+    @media (max-width: 1120px) {
+        align-items: center;
+        flex-direction: column;
+    }
+  }
+
+  &__select {
+     display: flex;
   }
 
   &__search {

@@ -1,14 +1,13 @@
 <template>
-<div class="main">
-  <div class="main__content">
-      <slot></slot>
-  </div>
-</div>
+<main class="main">
+  <slot></slot>
+</main>
 </template>
 
 <style lang="scss" scoped>
 .main {
   display: flex;
+  flex-direction: column;
   width: 100%;
   min-height: 100%;
   justify-content: center;
@@ -16,7 +15,6 @@
 
   &__content {
     display: flex;
-    flex-direction: column;
   }
 }
 </style>

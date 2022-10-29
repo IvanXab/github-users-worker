@@ -2,7 +2,6 @@
 import {defineEmits, ref} from "vue";
 
 const inputUser = ref('');
-
 const emit = defineEmits<{ (e: 'submit', searchValue: string): void }>();
 
 const handleSubmit = (): void => {

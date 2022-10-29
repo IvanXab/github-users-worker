@@ -1,5 +1,5 @@
 import axios from "axios";
-import {repositoryType, userType} from "../types/ApiType";
+import {repositoryType, userType} from "@/types/ApiType";
 
 export class AxiosService {
 

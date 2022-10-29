@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {repositoryType} from "../../types/ApiType";
-import {defineProps} from "vue";
+import { repositoryType } from "@/types/ApiType";
+import { defineProps } from "vue";
 
 interface Props {
   repository: repositoryType;
@@ -10,28 +10,26 @@ const props = defineProps<Props>();
 
 <template>
 <div class="card">
-  <div class="card__content">
-      <div style="">
-        <img src="/src/assets/images/repos_icon.png" alt="" width="17">
-        <a class="card__name" :href="props.repository.html_url" target="_blank">{{ props.repository.name }}</a>
+  <div>
+    <img src="/src/assets/images/repos_icon.png" width="17">
+    <a class="card__name" :href="props.repository.html_url" target="_blank">{{ props.repository.name }}</a>
+  </div>
+  <p class="card__description">{{ props.repository.description }}</p>
+  <div class="card__stats stats-item">
+    <div class="stats-item__lang">
+      <div class="circle"></div>
+      <span>{{ props.repository.language }}</span>
+    </div>
+    <div class="stats-item__popular">
+      <div class="stats-item__stars">
+        <img src="/src/assets/images/star.png" width="17">
+        <span>{{ props.repository.stargazers_count }}</span>
       </div>
-      <p class="card__description">{{ props.repository.description }}</p>
-      <div class="card__stats stats-item">
-        <div class="stats-item__lang">
-          <div class="circle"></div>
-          <span>{{ props.repository.language }}</span>
-        </div>
-        <div class="stats-item__popular">
-          <div class="stats-item__stars">
-            <img src="/src/assets/images/star.png" alt="" width="17">
-            <span>{{ props.repository.stargazers_count }}</span>
-          </div>
-          <div class="stats-item__forks">
-            <img src="/src/assets/images/icons8-branch-arrow-64.png" alt="" width="17">
-            <span>{{ props.repository.forks_count }}</span>
-          </div>
-        </div>
+      <div class="stats-item__forks">
+        <img src="/src/assets/images/icons8-branch-arrow-64.png" width="17">
+        <span>{{ props.repository.forks_count }}</span>
       </div>
+    </div>
   </div>
 </div>
 </template>
@@ -39,20 +37,16 @@ const props = defineProps<Props>();
 <style lang="scss" scoped>
 .card {
   display: flex;
-  width: 340px;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 340px;
   height: 150px;
   margin: 10px;
+  padding: 15px 10px;
   border: 1px solid #c7c7c7;
   border-radius: 10px;
   box-shadow: 5px 2px 5px #d5d2d2;
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    padding: 15px 10px;
-  }
 
   &__name {
     padding-left: 5px;
