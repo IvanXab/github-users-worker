@@ -12,7 +12,6 @@ declare module '@vue/runtime-core' {
     ElOption: typeof import('element-plus/es')['ElOption']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSelect: typeof import('element-plus/es')['ElSelect']
-    Header: typeof import('./src/components/Header/Header.vue')['default']
     Loader: typeof import('./src/components/Loader/Loader.vue')['default']
     Profile: typeof import('./src/components/Profile/Profile.vue')['default']
     ProjectsList: typeof import('./src/components/ProjectsList/ProjectsList.vue')['default']

@@ -1,33 +1,32 @@
 <script setup lang="ts">
 import { repositoryType } from "@/types/ApiType";
-import { defineProps } from "vue";
+import { defineProps, PropType } from "vue";
 
-interface Props {
-  repository: repositoryType;
-}
-const props = defineProps<Props>();
+const props = defineProps({
+  repository: Object as PropType<repositoryType>,
+});
 </script>
 
 <template>
 <div class="card">
   <div>
     <img src="/src/assets/images/repos_icon.png" width="17">
-    <a class="card__name" :href="props.repository.html_url" target="_blank">{{ props.repository.name }}</a>
+    <a class="card__name" :href="props.repository?.html_url" target="_blank">{{ props.repository?.name }}</a>
   </div>
-  <p class="card__description">{{ props.repository.description }}</p>
+  <p class="card__description">{{ props.repository?.description }}</p>
   <div class="card__stats stats-item">
     <div class="stats-item__lang">
       <div class="circle"></div>
-      <span>{{ props.repository.language }}</span>
+      <span>{{ props.repository?.language }}</span>
     </div>
     <div class="stats-item__popular">
       <div class="stats-item__stars">
         <img src="/src/assets/images/star.png" width="17">
-        <span>{{ props.repository.stargazers_count }}</span>
+        <span>{{ props.repository?.stargazers_count }}</span>
       </div>
       <div class="stats-item__forks">
         <img src="/src/assets/images/icons8-branch-arrow-64.png" width="17">
-        <span>{{ props.repository.forks_count }}</span>
+        <span>{{ props.repository?.forks_count }}</span>
       </div>
     </div>
   </div>

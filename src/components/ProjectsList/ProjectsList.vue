@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import Card from "@/components/Card/Card.vue";
 import Loader from "@/components/Loader/Loader.vue";
-import { defineProps, ref } from "vue";
+import {defineProps, PropType, ref} from "vue";
 import { optionsType } from "@/types/ApiType";
 import { useRepositoriesStore } from "@/store/repositories";
 
-interface Props {
-  optionsFilter?: Set<optionsType>;
-  isLoading: boolean;
-};
+const props = defineProps({
+  optionsFilter: Object as PropType<Set<optionsType>>,
+  isLoading: Boolean,
+});
 
-const props = defineProps<Props>();
 const repositoriesStore = useRepositoriesStore();
 const filterValue = ref('');
 const sortValue = ref('');

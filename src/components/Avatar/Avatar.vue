@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 
-interface Props {
-  avatar_url?: string;
-}
-const props = defineProps<Props>();
+const props = defineProps({
+  avatar_url: String,
+});
 </script>
 
 <template>
 <div class="avatar">
-  <img class="avatar__image" :src="props.avatar_url" alt=""/>
+  <img class="avatar__image" :src="props.avatar_url" />
 </div>
 </template>
 

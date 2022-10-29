@@ -2,14 +2,12 @@
 import Avatar from "@/components/Avatar/Avatar.vue";
 import Loader from "@/components/Loader/Loader.vue";
 import { userType } from "@/types/ApiType";
+import {defineProps, PropType} from "vue";
 
-import {defineProps} from "vue";
-
-interface Props {
-  user: userType | undefined;
-  isLoading: boolean;
-}
-const props = defineProps<Props>();
+const props = defineProps({
+  user: Object as PropType<userType>,
+  isLoading: Boolean,
+});
 </script>
 
 <template>
