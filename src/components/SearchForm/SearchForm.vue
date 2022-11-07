@@ -11,9 +11,14 @@ const handleSubmit = (): void => {
 
 <template>
 <div class="search-form" @keyup.enter="handleSubmit">
-  <input v-model="inputUser" class="search-form__input" type="text" placeholder="Find a GitHub profile..."/>
-  <button @click="handleSubmit" class="search-form__button">Search</button>
-</div><hr>
+  <input
+      class="search-form__input"
+      type="text"
+      placeholder="Find a GitHub profile..."
+      v-model="inputUser"
+  />
+  <button class="search-form__button" @click="handleSubmit">Search</button>
+</div>
 </template>
 
 <style lang="scss" scoped>
@@ -27,19 +32,23 @@ const handleSubmit = (): void => {
     width: 700px;
     height: 40px;
     padding: 10px;
-    border: 1px solid #a9a9a9;
-    border-radius: 10px;
+    border: 1px solid #5d5d5d;
+    border-radius: 8px;
 
-    @media (max-width: 866px) {
+    @media screen and (max-width: 866px) {
         width: 550px;
     }
 
-    @media (max-width: 650px) {
+    @media screen and (max-width: 650px) {
       width: 350px;
     }
 
-    @media (max-width: 450px) {
+    @media screen and (max-width: 450px) {
       width: 250px;
+    }
+
+    @media screen and (max-width: 320px) {
+      width: 210px;
     }
   }
 
@@ -58,13 +67,8 @@ const handleSubmit = (): void => {
     }
   }
 
-  @media (max-width: 1520px) {
+  @media screen and (max-width: 1520px) {
     margin-top: 20px;
   }
-}
-
-hr {
-  margin: 20px 0 30px;
-  opacity: 0.4;
 }
 </style>

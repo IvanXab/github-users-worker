@@ -17,9 +17,13 @@ const props = defineProps({
     <avatar :avatar_url="props.user?.avatar_url"/>
     <p class="profile__name">{{ props.user?.name }}</p>
     <div class="profile__info">
-      <a class="profile__login" :href="props.user?.html_url" target="_blank">@{{ props.user?.login }}</a>
+      <a class="profile__login" :href="props.user?.html_url" target="_blank">{{ props.user?.login }}</a>
+      <p class="profile__bio">{{ props.user?.bio }}</p>
       <p class="profile__email">{{ props.user?.email }}</p>
-      <p class="profile__location">{{ props.user?.location }}</p>
+      <div class="profile__location location" v-if="props.user?.location">
+        <img class="location__marker" src="/src/assets/images/marker_icon.png" />
+        <span class="location__city">{{ props.user?.location }}</span>
+      </div>
     </div>
   </div>
 </div>
@@ -54,13 +58,24 @@ const props = defineProps({
   }
 
   &__login, &__email {
-    padding-top: 10px;
+    padding-top: 5px;
     text-decoration: none;
     color: #06b3e7;
   }
 
-  &__location {
-    padding-top: 10px;
+  &__bio {
+    padding-top: 20px;
+  }
+}
+
+.location {
+  display: flex;
+  padding-top: 10px;
+
+  &__marker {
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
   }
 }
 </style>

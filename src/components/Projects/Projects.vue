@@ -27,10 +27,10 @@ const optionsSort = [
 </script>
 
 <template>
-<div class="projects-list">
-  <div class="projects-list__header">
+<div class="projects">
+  <div class="projects__header">
     <h1>User repositories :</h1>
-    <div class="projects-list__select">
+    <div class="projects__select">
       <el-select v-model="filterValue" placeholder="Language" @change="repositoriesStore.setFilter">
         <el-option
             v-for="item in optionsFilter"
@@ -51,34 +51,30 @@ const optionsSort = [
   </div>
     <loader v-if="props.isLoading"/>
     <el-scrollbar v-else>
-      <div class="projects-list__content">
-        <card
-            v-for="r in repositoriesStore.getFilteredRepositories"
-            :key="r.name"
-            :repository="r"
-        />
+      <div class="projects__content">
+        <card v-for="repository in repositoriesStore.getFilteredRepositories" :key="repository.name" :repository="repository" />
       </div>
     </el-scrollbar>
 </div>
 </template>
 
 <style lang="scss" scoped>
-.projects-list {
+.projects {
   display: flex;
   flex-direction: column;
+  max-width: 1150px;
   width: 100%;
-  max-width: 1120px;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 35px 20px;
 
   &__content {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    min-height: 80%;
     max-height: 510px;
-    border-radius: 10px;
+    min-height: 80%;
+    width: 100%;
+    padding: 10px;
   }
 
   &__header {
@@ -91,9 +87,10 @@ const optionsSort = [
       margin-bottom: 15px;
     }
 
-    @media (max-width: 1120px) {
-        align-items: center;
-        flex-direction: column;
+    @media screen and (max-width: 1120px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 

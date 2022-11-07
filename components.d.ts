@@ -14,7 +14,7 @@ declare module '@vue/runtime-core' {
     ElSelect: typeof import('element-plus/es')['ElSelect']
     Loader: typeof import('./src/components/Loader/Loader.vue')['default']
     Profile: typeof import('./src/components/Profile/Profile.vue')['default']
-    ProjectsList: typeof import('./src/components/ProjectsList/ProjectsList.vue')['default']
+    Projects: typeof import('./src/components/Projects/Projects.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchForm: typeof import('./src/components/SearchForm/SearchForm.vue')['default']

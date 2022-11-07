@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import Profile from "@/components/Profile/Profile.vue";
-import ProjectsList from "@/components/ProjectsList/ProjectsList.vue";
+import Projects from "@/components/Projects/Projects.vue";
 import SearchForm from "@/components/SearchForm/SearchForm.vue";
 import Layout from "@/layout/Layout.vue";
-
 import { ref } from "vue";
 import { AxiosService } from "@/api/AxiosService";
 import { optionsType, repositoryType, userType } from "@/types/ApiType";
@@ -21,13 +20,14 @@ const setLanguagesSelect = (): void => {
   const languages = new Set<string>();
   repositoriesStore.getRepositories.forEach((r: repositoryType) => {
     if (r.language) {
-      languages.add(r.language)
+      languages.add(r.language);
     }
   });
   optionsLanguages.add({ value: 'All', label: 'All' });
   languages.forEach((l:string) => optionsLanguages.add({ value: l, label: l}));
   optionsFilter.value = optionsLanguages;
 };
+
 
 const handleSearchUser = async (username: string): Promise<void> => {
   isLoading.value = true;
@@ -43,8 +43,8 @@ const handleSearchUser = async (username: string): Promise<void> => {
 <layout>
   <search-form @submit="handleSearchUser"/>
   <div class="home-page" v-if="isSearch">
-    <profile :user="user" :is-loading="isLoading" />
-    <projects-list :is-loading="isLoading" :options-filter="optionsFilter"/>
+    <profile :user="user" :is-loading="isLoading"/>
+    <projects :is-loading="isLoading" :options-filter="optionsFilter"/>
   </div>
   <div class="home-page__welcome" v-else>
     <img class="home-page__logo" src="/src/assets/images/Octocat.png">
@@ -74,10 +74,11 @@ const handleSearchUser = async (username: string): Promise<void> => {
     letter-spacing: 0.3px;
   }
 
-  @media (max-width: 1500px) {
-    align-items: center;
-    justify-content: center;
+  @media screen and (max-width: 1500px) {
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>

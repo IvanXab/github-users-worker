@@ -9,14 +9,14 @@ const props = defineProps({
 
 <template>
 <div class="card">
-  <div>
+  <div class="card__name">
     <img src="/src/assets/images/repos_icon.png" width="17">
-    <a class="card__name" :href="props.repository?.html_url" target="_blank">{{ props.repository?.name }}</a>
+    <a class="card__url" :href="props.repository?.html_url" target="_blank">{{ props.repository?.name }}</a>
   </div>
   <p class="card__description">{{ props.repository?.description }}</p>
   <div class="card__stats stats-item">
     <div class="stats-item__lang">
-      <div class="circle"></div>
+      <div class="stats-item__circle" v-if="props.repository?.language"></div>
       <span>{{ props.repository?.language }}</span>
     </div>
     <div class="stats-item__popular">
@@ -38,8 +38,8 @@ const props = defineProps({
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
   max-width: 340px;
+  width: 100%;
   height: 150px;
   margin: 10px;
   padding: 15px 10px;
@@ -47,7 +47,7 @@ const props = defineProps({
   border-radius: 10px;
   box-shadow: 5px 2px 5px #d5d2d2;
 
-  &__name {
+  &__url {
     padding-left: 5px;
     font-size: 18px;
     text-decoration: none;
@@ -92,13 +92,15 @@ const props = defineProps({
       padding-left: 2px;
     }
   }
+
+  &__circle {
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: #8f8f8f;
+  }
 }
 
-.circle {
-  width: 17px;
-  height: 17px;
-  margin-right: 5px;
-  border-radius: 50%;
-  background: #8f8f8f;
-}
+
 </style>
