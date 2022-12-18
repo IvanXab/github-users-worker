@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import {defineEmits, ref} from "vue";
+import { defineEmits, ref } from "vue";
+import { useDark } from "@vueuse/core";
 
 const inputUser = ref('');
-const emit = defineEmits<{ (e: 'submit', searchValue: string): void }>();
+
+const emit = defineEmits<{
+  (e: 'submit', searchValue: string): void
+}>();
+
+const isDark = useDark();
 
 const handleSubmit = (): void => {
     emit('submit', inputUser.value);
-}
+};
+
 </script>
 
 <template>
@@ -17,7 +24,8 @@ const handleSubmit = (): void => {
       placeholder="Find a GitHub profile..."
       v-model="inputUser"
   />
-  <button class="search-form__button" @click="handleSubmit">Search</button>
+  <el-button @click="handleSubmit" type="primary" round>Search</el-button>
+  <el-switch v-model="isDark" />
 </div>
 </template>
 
@@ -32,8 +40,8 @@ const handleSubmit = (): void => {
     width: 700px;
     height: 40px;
     padding: 10px;
-    border: 1px solid #5d5d5d;
-    border-radius: 8px;
+    border: 1px solid #409eff;
+    border-radius: 10px;
 
     @media screen and (max-width: 866px) {
         width: 550px;
@@ -49,21 +57,6 @@ const handleSubmit = (): void => {
 
     @media screen and (max-width: 320px) {
       width: 210px;
-    }
-  }
-
-  &__button {
-    width: 70px;
-    height: 40px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 15px;
-    background-image: linear-gradient(to right, #d5dadc, #d6d9db, #d6d8d9, #d7d7d8, #d6d6d6);
-
-    &:hover {
-      background-image: linear-gradient(to right, #50e576, #43e684, #36e791, #28e89d, #19e9a9);
-      transition: 1s;
-      cursor: pointer;
     }
   }
 

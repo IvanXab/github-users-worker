@@ -8,9 +8,9 @@ const routes = [
     }
 ];
 
-const router = createRouter({
+const index = createRouter({
     history: createWebHistory('/github-users-worker/'),
     routes,
 });
 
-export default router;
+export default index;

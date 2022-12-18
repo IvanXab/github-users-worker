@@ -3,6 +3,7 @@ import Profile from "@/components/Profile/Profile.vue";
 import Projects from "@/components/Projects/Projects.vue";
 import SearchForm from "@/components/SearchForm/SearchForm.vue";
 import Layout from "@/layout/Layout.vue";
+
 import { ref } from "vue";
 import { AxiosService } from "@/api/AxiosService";
 import { optionsType, repositoryType, userType } from "@/types/ApiType";
@@ -18,13 +19,20 @@ const repositoriesStore = useRepositoriesStore();
 const setLanguagesSelect = (): void => {
   const optionsLanguages = new Set<optionsType>();
   const languages = new Set<string>();
+
   repositoriesStore.getRepositories.forEach((r: repositoryType) => {
     if (r.language) {
       languages.add(r.language);
     }
   });
-  optionsLanguages.add({ value: 'All', label: 'All' });
-  languages.forEach((l:string) => optionsLanguages.add({ value: l, label: l}));
+
+  optionsLanguages.add(
+      {
+        value: 'All',
+        label: 'All'
+      }
+  );
+  languages.forEach((l: string) => optionsLanguages.add({ value: l, label: l}));
   optionsFilter.value = optionsLanguages;
 };
 
@@ -32,9 +40,12 @@ const setLanguagesSelect = (): void => {
 const handleSearchUser = async (username: string): Promise<void> => {
   isLoading.value = true;
   isSearch.value = true;
+
   user.value = await axiosService.fetchUser(username);
   repositoriesStore.setRepositories(await axiosService.fetchRepos(username));
+
   isLoading.value = false;
+
   setLanguagesSelect();
 };
 </script>
@@ -72,6 +83,7 @@ const handleSearchUser = async (username: string): Promise<void> => {
 
   &__text {
     letter-spacing: 0.3px;
+    color: var(--el-color-primary);
   }
 
   @media screen and (max-width: 1500px) {

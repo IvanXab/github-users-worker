@@ -1,0 +1,11 @@
+.el-button {
+
+  &--primary{
+    width: 80px;
+    margin: 0 10px;
+    background: var(--el-color-primary);
+    span {
+      font-size: 15px;
+    }
+  }
+}
