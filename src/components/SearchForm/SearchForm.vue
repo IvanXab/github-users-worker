@@ -25,7 +25,6 @@ const handleSubmit = (): void => {
       v-model="inputUser"
   />
   <el-button @click="handleSubmit" type="primary" round>Search</el-button>
-  <el-switch v-model="isDark" />
 </div>
 </template>
 
