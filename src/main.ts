@@ -5,7 +5,6 @@ import { createPinia } from 'pinia'
 import App from './App.vue';
 import '@/assets/styles/index.scss';
 import 'element-plus/dist/index.css';
-import 'element-plus/theme-chalk/dark/css-vars.css';
 
 const pinia = createPinia();
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Card from "@/components/Card/Card.vue";
-import Loader from "@/components/Loader/Loader.vue";
+import Card from "@/components/Card.vue";
+import Loader from "@/components/Loader.vue";
 import {defineProps, PropType, ref} from "vue";
 import { optionsType } from "@/types/ApiType";
 import { useRepositoriesStore } from "@/store/repositories";
@@ -11,17 +11,17 @@ const props = defineProps({
 });
 
 const repositoriesStore = useRepositoriesStore();
-const filterValue = ref('');
-const sortValue = ref('');
+const filterValue = ref<string>('');
+const sortValue = ref<string>('');
 
 const optionsSort = [
   {
     value: 'name',
-    label: 'Name'
+    label: 'По названию'
   },
   {
     value: 'stars',
-    label: 'Stars'
+    label: 'По популярности'
   }
 ];
 </script>
@@ -29,9 +29,9 @@ const optionsSort = [
 <template>
 <div class="projects">
   <div class="projects__header">
-    <h1>User repositories :</h1>
+    <h1>Репозитории пользователя :</h1>
     <div class="projects__select">
-      <el-select v-model="filterValue" placeholder="Language" @change="repositoriesStore.setFilter">
+      <el-select v-model="filterValue" placeholder="Язык программирования" @change="repositoriesStore.setFilter">
         <el-option
             v-for="item in optionsFilter"
             :key="item.value"
@@ -39,7 +39,7 @@ const optionsSort = [
             :value="item.value"
         />
       </el-select>
-      <el-select v-model="sortValue" placeholder="Sort" @change="repositoriesStore.setSort">
+      <el-select v-model="sortValue" placeholder="Сортировать" @change="repositoriesStore.setSort">
         <el-option
             v-for="item in optionsSort"
             :key="item.value"
@@ -65,6 +65,9 @@ const optionsSort = [
   max-width: 1150px;
   width: 100%;
   padding: 35px 20px;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px #0000001a;
 
   &__content {
     display: flex;
@@ -95,7 +98,8 @@ const optionsSort = [
   }
 
   &__select {
-     display: flex;
+    display: flex;
+    gap: 10px;
   }
 
   &__search {

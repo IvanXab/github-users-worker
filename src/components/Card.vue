@@ -11,19 +11,27 @@ const props = defineProps({
 <div class="card">
   <div class="card__name">
     <img src="/src/assets/images/repos_icon.png" width="17">
-    <a class="card__url" :href="props.repository?.html_url" target="_blank">{{ props.repository?.name }}</a>
+    <a class="card__url" :href="props.repository?.html_url" target="_blank">
+      {{ props.repository?.name }}
+    </a>
   </div>
-  <p class="card__description">{{ props.repository?.description }}</p>
+
+  <p class="card__description">
+    {{ props.repository?.description }}
+  </p>
+
   <div class="card__stats stats-item">
     <div class="stats-item__lang">
-      <div class="stats-item__circle" v-if="props.repository?.language"></div>
+      <div v-if="props.repository?.language" class="stats-item__circle"></div>
       <span>{{ props.repository?.language }}</span>
     </div>
+
     <div class="stats-item__popular">
       <div class="stats-item__stars">
         <img src="/src/assets/images/star.png" width="17">
         <span>{{ props.repository?.stargazers_count }}</span>
       </div>
+
       <div class="stats-item__forks">
         <img src="/src/assets/images/icons8-branch-arrow-64.png" width="17">
         <span>{{ props.repository?.forks_count }}</span>
@@ -45,7 +53,11 @@ const props = defineProps({
   padding: 15px 10px;
   border: 1px solid #c7c7c7;
   border-radius: 10px;
-  box-shadow: 5px 2px 5px #d5d2d2;
+
+  &__name {
+    display: flex;
+    align-items: center;
+  }
 
   &__url {
     padding-left: 5px;
@@ -56,6 +68,10 @@ const props = defineProps({
   }
 
   &__description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
     font-size: 14px;
     color: #494949;
   }
@@ -73,6 +89,7 @@ const props = defineProps({
 
   &__lang {
     display: flex;
+    align-items: center;
   }
 
   &__popular {
@@ -101,6 +118,4 @@ const props = defineProps({
     background: #8f8f8f;
   }
 }
-
-
 </style>

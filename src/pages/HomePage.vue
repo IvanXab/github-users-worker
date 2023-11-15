@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Profile from "@/components/Profile/Profile.vue";
-import Projects from "@/components/Projects/Projects.vue";
-import SearchForm from "@/components/SearchForm/SearchForm.vue";
+import Profile from "@/components/Profile.vue";
+import Projects from "@/components/Projects.vue";
+import SearchForm from "@/components/SearchForm.vue";
 import Layout from "@/layout/Layout.vue";
 
 import { ref } from "vue";
@@ -11,8 +11,8 @@ import { useRepositoriesStore } from "@/store/repositories";
 
 const user = ref<userType>();
 const optionsFilter = ref<Set<optionsType>>();
-const isSearch = ref(false);
-const isLoading = ref(false);
+const isSearch = ref<boolean>(false);
+const isLoading = ref<boolean>(false);
 const axiosService = new AxiosService();
 const repositoriesStore = useRepositoriesStore();
 
@@ -52,14 +52,16 @@ const handleSearchUser = async (username: string): Promise<void> => {
 
 <template>
 <layout>
-  <search-form @submit="handleSearchUser"/>
+  <search-form @submit="handleSearchUser" />
   <div class="home-page" v-if="isSearch">
-    <profile :user="user" :is-loading="isLoading"/>
-    <projects :is-loading="isLoading" :options-filter="optionsFilter"/>
+    <profile :user="user" :is-loading="isLoading" />
+    <projects :is-loading="isLoading" :options-filter="optionsFilter" />
   </div>
   <div class="home-page__welcome" v-else>
     <img class="home-page__logo" src="/src/assets/images/Octocat.png">
-    <p class="home-page__text">You can search for a GitHub profile now!</p>
+    <p class="home-page__text">
+      Теперь вы можете выполнить поиск профиля на GitHub!
+    </p>
   </div>
 </layout>
 </template>
@@ -67,6 +69,10 @@ const handleSearchUser = async (username: string): Promise<void> => {
 <style lang="scss" scoped>
 .home-page {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 
   &__welcome {
     display: flex;
@@ -84,13 +90,6 @@ const handleSearchUser = async (username: string): Promise<void> => {
   &__text {
     letter-spacing: 0.3px;
     color: var(--el-color-primary);
-  }
-
-  @media screen and (max-width: 1500px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 }
 </style>

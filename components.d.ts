@@ -7,17 +7,18 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Avatar: typeof import('./src/components/Avatar/Avatar.vue')['default']
-    Card: typeof import('./src/components/Card/Card.vue')['default']
+    Card: typeof import('./src/components/Card.vue')['default']
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElInput: typeof import('element-plus/es')['ElInput']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSelect: typeof import('element-plus/es')['ElSelect']
-    Loader: typeof import('./src/components/Loader/Loader.vue')['default']
-    Profile: typeof import('./src/components/Profile/Profile.vue')['default']
-    Projects: typeof import('./src/components/Projects/Projects.vue')['default']
+    Loader: typeof import('./src/components/Loader.vue')['default']
+    Profile: typeof import('./src/components/Profile.vue')['default']
+    Projects: typeof import('./src/components/Projects.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SearchForm: typeof import('./src/components/SearchForm/SearchForm.vue')['default']
+    SearchForm: typeof import('./src/components/SearchForm.vue')['default']
   }
 }

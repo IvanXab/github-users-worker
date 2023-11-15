@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import Avatar from "@/components/Avatar/Avatar.vue";
-import Loader from "@/components/Loader/Loader.vue";
+import Loader from "@/components/Loader.vue";
 import { userType } from "@/types/ApiType";
 import {defineProps, PropType} from "vue";
 
@@ -14,8 +13,10 @@ const props = defineProps({
 <div class="profile">
   <loader v-if="props.isLoading"/>
   <div class="profile__content" v-else>
-    <avatar :avatar_url="props.user?.avatar_url"/>
+    <el-avatar :src="props.user?.avatar_url" :size="250" />
+
     <p class="profile__name">{{ props.user?.name }}</p>
+
     <div class="profile__info">
       <a class="profile__login" :href="props.user?.html_url" target="_blank">{{ props.user?.login }}</a>
       <p class="profile__bio">{{ props.user?.bio }}</p>
@@ -35,8 +36,12 @@ const props = defineProps({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 350px;
-  height: 400px;
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px #0000001a;
 
   &__content {
     display: flex;
