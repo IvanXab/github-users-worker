@@ -1,23 +1,23 @@
-import {defineStore} from "pinia";
-import {repositoryType} from "@/types/ApiType";
+import { defineStore } from "pinia";
+import { repositoryType } from "@/types/ApiType";
 
 interface State {
-    repositories: repositoryType[];
-    filters: string;
-    sorts: string;
+  repositories: repositoryType[];
+  filters: string;
+  sorts: string;
 };
 
 export const useRepositoriesStore = defineStore('repositories', {
     state: () => ({
-        repositories: [],
-        filters: '',
-        sorts: ''
+      repositories: [],
+      filters: '',
+      sorts: ''
     } as State),
     getters: {
         getFilteredRepositories(state) {
             const repositories: repositoryType[] = this.getSortedRepositories;
             if (state.filters && state.filters !== 'All') {
-                return repositories.filter((r: repositoryType) => r.language === state.filters);
+                return repositories.filter((repository: repositoryType) => repository.language === state.filters);
             }
             if (state.filters === 'All')  {
                 return repositories;

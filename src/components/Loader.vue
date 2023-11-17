@@ -16,7 +16,7 @@
     display: inline-block;
     width: 48px;
     height: 48px;
-    border: 5px solid #727272;
+    border: 5px solid #409eff;
     border-bottom-color: transparent;
     border-radius: 50%;
     box-sizing: border-box;

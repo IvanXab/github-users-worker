@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Loader from "@/components/Loader.vue";
 import { userType } from "@/types/ApiType";
 import {defineProps, PropType} from "vue";
 
@@ -11,12 +10,10 @@ const props = defineProps({
 
 <template>
 <div class="profile">
-  <loader v-if="props.isLoading"/>
-  <div class="profile__content" v-else>
+  <div class="profile__content">
     <el-avatar :src="props.user?.avatar_url" :size="250" />
-
+    
     <p class="profile__name">{{ props.user?.name }}</p>
-
     <div class="profile__info">
       <a class="profile__login" :href="props.user?.html_url" target="_blank">{{ props.user?.login }}</a>
       <p class="profile__bio">{{ props.user?.bio }}</p>
@@ -36,6 +33,7 @@ const props = defineProps({
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 1150px;
   width: 100%;
   height: auto;
   padding: 1rem;

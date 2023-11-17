@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import index from '@/router';
+import router from './router';
 import ElementPlus from 'element-plus';
 import { createPinia } from 'pinia'
 import App from './App.vue';
@@ -8,4 +8,4 @@ import 'element-plus/dist/index.css';
 
 const pinia = createPinia();
 
-createApp(App).use(index).use(ElementPlus).use(pinia).mount('#app');
+createApp(App).use(router).use(ElementPlus).use(pinia).mount('#app');

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Card from "@/components/Card.vue";
-import Loader from "@/components/Loader.vue";
 import {defineProps, PropType, ref} from "vue";
 import { optionsType } from "@/types/ApiType";
 import { useRepositoriesStore } from "@/store/repositories";
@@ -29,32 +28,35 @@ const optionsSort = [
 <template>
 <div class="projects">
   <div class="projects__header">
-    <h1>Репозитории пользователя :</h1>
+    <h1>Репозитории пользователя:</h1>
     <div class="projects__select">
       <el-select v-model="filterValue" placeholder="Язык программирования" @change="repositoriesStore.setFilter">
         <el-option
-            v-for="item in optionsFilter"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
+          v-for="item in optionsFilter"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
         />
       </el-select>
       <el-select v-model="sortValue" placeholder="Сортировать" @change="repositoriesStore.setSort">
         <el-option
-            v-for="item in optionsSort"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
+          v-for="item in optionsSort"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
         />
       </el-select>
     </div>
   </div>
-    <loader v-if="props.isLoading"/>
-    <el-scrollbar v-else>
-      <div class="projects__content">
-        <card v-for="repository in repositoriesStore.getFilteredRepositories" :key="repository.name" :repository="repository" />
-      </div>
-    </el-scrollbar>
+  <el-scrollbar>
+    <div class="projects__content">
+      <card 
+       v-for="repository in repositoriesStore.getFilteredRepositories" 
+       :key="repository.name"
+       :repository="repository" 
+      />
+    </div>
+  </el-scrollbar>
 </div>
 </template>
 
@@ -83,6 +85,7 @@ const optionsSort = [
   &__header {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 
     h1 {
       font-size: 24px;
