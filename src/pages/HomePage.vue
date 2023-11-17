@@ -9,6 +9,7 @@ import { ref } from "vue";
 import { AxiosService } from "@/api/AxiosService";
 import { optionsType, repositoryType, userType } from "@/types/ApiType";
 import { useRepositoriesStore } from "@/store/repositories";
+import { ElMessage } from "element-plus";
 
 const user = ref<userType>();
 const optionsFilter = ref<Set<optionsType>>();
@@ -45,12 +46,18 @@ const handleSearchUser = async (username: string): Promise<void> => {
   isLoading.value = true;
   isSearch.value = true;
 
-  user.value = await axiosService.fetchUser(username);
-  repositoriesStore.setRepositories(await axiosService.fetchRepos(username));
-
-  isLoading.value = false;
-
-  setLanguagesSelect();
+  try {
+    user.value = await axiosService.fetchUser(username);
+    repositoriesStore.setRepositories(await axiosService.fetchRepos(username));
+    setLanguagesSelect();
+  }
+  catch {
+    ElMessage.error('Не удалось найти такого пользователя');
+    isSearch.value = false;
+  }
+  finally {
+    isLoading.value = false;
+  }
 };
 </script>
 

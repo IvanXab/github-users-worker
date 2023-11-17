@@ -15,10 +15,7 @@ declare module '@vue/runtime-core' {
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     Loader: typeof import('./src/components/Loader.vue')['default']
-    Profile: typeof import('./src/widgets/Profile.vue')['default']
-    Projects: typeof import('./src/widgets/Projects.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SearchForm: typeof import('./src/widgets/SearchForm.vue')['default']
   }
 }

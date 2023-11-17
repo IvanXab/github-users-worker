@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import Card from "@/components/Card.vue";
-import {defineProps, PropType, ref} from "vue";
+import { PropType, ref } from "vue";
 import { optionsType } from "@/types/ApiType";
 import { useRepositoriesStore } from "@/store/repositories";
 
-const props = defineProps({
-  optionsFilter: Object as PropType<Set<optionsType>>,
-  isLoading: Boolean,
+defineProps({
+  optionsFilter: Object as PropType<Set<optionsType>>
 });
 
 const repositoriesStore = useRepositoriesStore();

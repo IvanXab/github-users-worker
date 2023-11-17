@@ -1,26 +1,25 @@
 <script setup lang="ts">
 import { userType } from "@/types/ApiType";
-import {defineProps, PropType} from "vue";
+import { PropType } from "vue";
 
-const props = defineProps({
-  user: Object as PropType<userType>,
-  isLoading: Boolean,
+defineProps({
+  user: Object as PropType<userType>
 });
 </script>
 
 <template>
 <div class="profile">
   <div class="profile__content">
-    <el-avatar :src="props.user?.avatar_url" :size="250" />
+    <el-avatar :src="user?.avatar_url" :size="250" />
     
-    <p class="profile__name">{{ props.user?.name }}</p>
+    <p class="profile__name">{{ user?.name }}</p>
     <div class="profile__info">
-      <a class="profile__login" :href="props.user?.html_url" target="_blank">{{ props.user?.login }}</a>
-      <p class="profile__bio">{{ props.user?.bio }}</p>
-      <p class="profile__email">{{ props.user?.email }}</p>
-      <div class="profile__location location" v-if="props.user?.location">
+      <a class="profile__login" :href="user?.html_url" target="_blank">{{ user?.login }}</a>
+      <p class="profile__bio">{{ user?.bio }}</p>
+      <p class="profile__email">{{ user?.email }}</p>
+      <div class="profile__location location" v-if="user?.location">
         <img class="location__marker" src="/src/assets/images/marker_icon.png" />
-        <span class="location__city">{{ props.user?.location }}</span>
+        <span class="location__city">{{ user?.location }}</span>
       </div>
     </div>
   </div>
