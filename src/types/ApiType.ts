@@ -4,6 +4,8 @@ export type userType = {
     email: string,
     location: string,
     avatar_url: string,
+    followers: string,
+    following: string,
     html_url: string,
     bio: string,
 };
