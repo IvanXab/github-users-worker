@@ -14,11 +14,20 @@ defineProps({
     
     <p class="profile__name">{{ user?.name }}</p>
     <div class="profile__info">
-      <a class="profile__login" :href="user?.html_url" target="_blank">{{ user?.login }}</a>
+      <a class="profile__login" :href="user?.html_url" target="_blank">
+        {{ user?.login }}
+      </a>
+      <div class="profile__followers">
+        <img class="icon__followers" src="/src/assets/images/followers.png" />
+        <p>
+          Подписчиков: {{ user?.followers }}
+          Подписки: {{ user?.following }}
+        </p>
+      </div>
       <p class="profile__bio">{{ user?.bio }}</p>
       <p class="profile__email">{{ user?.email }}</p>
       <div class="profile__location location" v-if="user?.location">
-        <img class="location__marker" src="/src/assets/images/marker_icon.png" />
+        <img class="icon__locale" src="/src/assets/images/marker_icon.png" />
         <span class="location__city">{{ user?.location }}</span>
       </div>
     </div>
@@ -49,7 +58,7 @@ defineProps({
   &__name {
     margin-left: 15px;
     margin-top: 20px;
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 600;
   }
 
@@ -59,22 +68,34 @@ defineProps({
     margin-left: 15px;
   }
 
+  &__followers {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
   &__login, &__email {
+    padding-bottom: 10px;
     padding-top: 5px;
     text-decoration: none;
     color: #06b3e7;
   }
 
   &__bio {
-    padding-top: 20px;
+    padding-top: 15px
   }
 }
 
-.location {
+.icon {
   display: flex;
-  padding-top: 10px;
+  padding: 10px;
 
-  &__marker {
+  &__followers {
+    width: 17px;
+    height: 17px;
+  }
+
+  &__locale {
     width: 17px;
     height: 17px;
     margin-right: 5px;
